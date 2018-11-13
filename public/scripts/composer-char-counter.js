@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+  $('.error-message').hide()
+
+  function errorAlert() {
+    console.log("got here")
+  $(".error-message").show()
+}
+
   $('#new-tweet-form').on("input", function(event) {
 
     const target = $(event.currentTarget);
@@ -17,10 +24,12 @@ $(document).ready(function() {
 
     if (count < 0) {
       $('.tweet-button').attr('disabled', 'disabled');
+      errorAlert();
     } else if (count >= 140) {
       $('.tweet-button').attr('disabled', 'disabled');
     } else {
       $('.tweet-button').removeAttr("disabled");
+      $('.error-message').hide()
     }
   })
 });

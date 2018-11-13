@@ -1,11 +1,10 @@
 $(() => {
 
   loadTweets();
-  $(".error-message").hide()
 
 
 //   (() => {
-//   $('.error-message').hide()
+
 // })
 
 function renderTweets(tweets) {
@@ -60,10 +59,15 @@ function createTweetElement(tweet) {
     };
   }
 
+function errorHide() {
+  $(".error-message").hide()
+};
+
 function errorAlert() {
-  $( ".logo" ).click(function() {
+  // $( ".logo" ).click(function() {
+    console.log("got here")
   $(".error-message").show()
-  });
+  // });
 }
 
 $('#new-tweet-form').on('submit', handleNewTweet);
