@@ -1,9 +1,8 @@
-$(document).ready(function() {
+$(() => {
 
   $('.error-message').hide()
 
   function errorAlert() {
-    console.log("got here")
   $(".error-message").show()
 }
 
@@ -21,7 +20,6 @@ $(document).ready(function() {
     } else {
       characterCounter.css("color", "#334853")
     }
-
     if (count < 0) {
       $('.tweet-button').attr('disabled', 'disabled');
       errorAlert();
@@ -33,6 +31,3 @@ $(document).ready(function() {
     }
   })
 });
-
-
- // if ((count > 0) && (count < 140))
