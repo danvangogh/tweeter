@@ -1,11 +1,8 @@
 $(() => {
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 
   loadTweets();
+  $(".error-message").hide()
+
 
 //   (() => {
 //   $('.error-message').hide()
@@ -30,8 +27,6 @@ function createTweetElement(tweet) {
   let content = tweet["content"];
   let timeStamp = tweet["created_at"];
   let date = new Date(timeStamp * 1000).toDateString();
-  console.log("date = ", date );
-  console.log("timeStamp = ", timeStamp)
   // let day = date.toDateString();
 
   return `<article class="tweet">
@@ -50,7 +45,7 @@ function createTweetElement(tweet) {
   function handleNewTweet(event) {
     event.preventDefault();
     const data = $(this).serialize();
-    let splitData = data.split("=")[1].length;
+    let splitData = $('#textarea')[0].value.length;
     if ( (splitData) && (splitData <= 140) ) {
       $.ajax({
         method: 'POST',

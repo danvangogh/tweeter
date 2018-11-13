@@ -16,11 +16,14 @@ $(document).ready(function() {
     }
 
     if (count < 0) {
-      $('.tweet-button').attr('disabled', 'monkeys');
+      $('.tweet-button').attr('disabled', 'disabled');
     } else if (count >= 140) {
-      $('.tweet-button').attr('disabled', 'monkeys');
-    } else if ((count > 0) && (count < 140)) {
+      $('.tweet-button').attr('disabled', 'disabled');
+    } else {
       $('.tweet-button').removeAttr("disabled");
     }
   })
 });
+
+
+ // if ((count > 0) && (count < 140))
