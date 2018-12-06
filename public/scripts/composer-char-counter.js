@@ -20,11 +20,12 @@ $(() => {
     } else {
       characterCounter.css("color", "#334853")
     }
-    if (count < 0) {
+    if (count <= 0) {
       $('.tweet-button').attr('disabled', 'disabled');
       errorAlert();
     } else if (count >= 140) {
       $('.tweet-button').attr('disabled', 'disabled');
+      errorAlert();
     } else {
       $('.tweet-button').removeAttr("disabled");
       $('.error-message').hide()

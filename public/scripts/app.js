@@ -6,7 +6,7 @@ $(() => {
     // $(".tweet-container").empty();
     tweets.forEach( tweet => {
       $(".tweet-container").prepend(createTweetElement(tweet));
-      $('#new-tweet-form')[0].reset()
+
     })
   }
 
@@ -16,6 +16,32 @@ $(() => {
     return div.innerHTML;
   }
 
+  function timeSince(date) {
+  var seconds = Math.floor((new Date() - date) / 1000);
+  var interval = Math.floor(seconds / 31536000);
+  if (interval > 1) {
+    return interval + " years";
+  }
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) {
+    return interval + " months";
+  }
+  interval = Math.floor(seconds / 86400);
+  if (interval > 1) {
+    return interval + " days";
+  }
+  interval = Math.floor(seconds / 3600);
+  if (interval > 1) {
+    return interval + " hours";
+  }
+  interval = Math.floor(seconds / 60);
+  if (interval > 1) {
+    return interval + " minutes";
+  }
+  return Math.floor(seconds) + " seconds";
+}
+
+
   function createTweetElement(tweet) {
     let user = tweet["user"];
     let content = tweet["content"];
@@ -23,18 +49,20 @@ $(() => {
     let date = new Date(timeStamp * 1000).toDateString();
     // let day = date.toDateString();
 
-    return `<article class="tweet">
-      <header class="tweet-header">
-      <img id="avatar" src="${escape(user["avatars"].small)}" />
-      <h2>${escape(user["name"])}</h2>
-      <span class="handle">${escape(user["handle"])}</span>
-      </header>
-      <p class="tweet-body">${escape(content["text"])}</p>
-      <footer class="tweet-footer"><p>${date}</p>
-      <span></span>
-      </footer>
+    return (
+      `<article class="tweet">
+        <header class="tweet-header">
+          <img id="avatar" src="${escape(user["avatars"].small)}" />
+            <h2>${escape(user["name"])}</h2>
+          <span class="handle">${escape(user["handle"])}</span>
+        </header>
+        <p class="tweet-body">${escape(content["text"])}</p>
+        <footer class="tweet-footer"><p class="date">${timeSince(timeStamp)} ago.</p>
+          <footer class="emojis">⚐ ☞ ❤︎</div
+        </footer>
       </article>`
-    }
+    )
+  }
 
     function handleNewTweet(event) {
       event.preventDefault();
@@ -52,6 +80,8 @@ $(() => {
     } else {
       errorAlert();
       };
+      $('#new-tweet-form')[0].reset()
+      $('.counter').text('140')
     }
 
   function errorHide() {

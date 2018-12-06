@@ -62,9 +62,26 @@ span.handle {
 }
 
 .tweet-footer {
+  display: flex;
   font-weight: 300;
   border-top: 1px solid #eeeeee;
   padding: 0em .7em 0em .7em;
+ }
+
+  .date {
+    color: #00a087;
+    margin-left: 2px;
+  }
+
+  .emojis:hover {
+    opacity: 1;
+  }
+
+  .emojis {
+  opacity: 0;
+  color: #00a087;
+  margin-left: 160px;
+  font-size: 1.8em;
  }
 
 #avatar {
@@ -88,5 +105,3 @@ span.handle {
   float: right;
   margin: 5px;
 }
-
-
